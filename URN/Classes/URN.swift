@@ -19,6 +19,10 @@ public struct URN {
     public var uuidString: String {
         return uuid.uuidString.lowercased()
     }
+
+    public var components: [String] {
+        stringValue.components(separatedBy: ":")
+    }
 }
 
 extension URN: StringRepresentable {
