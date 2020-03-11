@@ -1,0 +1,16 @@
+PODS:
+  - URN (0.1.0)
+
+DEPENDENCIES:
+  - URN (from `../`)
+
+EXTERNAL SOURCES:
+  URN:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  URN: a99f325bbd915d6c2bc59cbc9e17eaa6bc096e64
+
+PODFILE CHECKSUM: 6e9f09983a3ff9cb9b8a2fccb250919661a8141e
+
+COCOAPODS: 1.7.5

@@ -1,0 +1,6 @@
+use_frameworks!
+target 'URN_Tests' do
+  pod 'URN', :path => '../'
+  
+  
+end

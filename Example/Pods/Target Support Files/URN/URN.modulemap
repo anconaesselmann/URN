@@ -1,0 +1,6 @@
+framework module URN {
+  umbrella header "URN-umbrella.h"
+
+  export *
+  module * { export * }
+}
