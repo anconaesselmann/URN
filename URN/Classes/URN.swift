@@ -3,13 +3,22 @@
 //
 
 import Foundation
+import ValueTypeRepresentable
 
 public struct URN {
     public let stringValue: String
 
+    public var rawValue: String {
+        return stringValue
+    }
+
     public init?(stringValue: String) {
         self.stringValue = stringValue
         // todo: don't initialize if not a valid urn
+    }
+
+    public init?(rawValue: String) {
+        self.init(stringValue: rawValue)
     }
 
     public var uuid: UUID {
@@ -26,12 +35,8 @@ public struct URN {
 }
 
 extension URN: StringRepresentable {
-    public var rawValue: String {
-        return stringValue
-    }
-
-    public init?(rawValue: String) {
-        self.init(stringValue: rawValue)
+    public init?(_ stringValue: String) {
+        self.init(stringValue: stringValue)
     }
 }
 

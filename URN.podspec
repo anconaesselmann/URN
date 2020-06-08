@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'URN'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'A URN type'
   s.swift_version    = '5.0'
 
@@ -17,4 +17,5 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '3.0'
 
   s.source_files = 'URN/Classes/**/*'
+  s.dependency 'ValueTypeRepresentable'
 end

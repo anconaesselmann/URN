@@ -1,7 +1,7 @@
 //  Created by Axel Ancona Esselmann on 2/6/20.
 //
 
-import Foundation
+import ValueTypeRepresentable
 
 /// Convenient Comparable conformance for resources that don't change
 public protocol UrnComparable: Comparable {
