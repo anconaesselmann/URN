@@ -90,3 +90,55 @@ public extension String {
         }
     }
 }
+
+public protocol UrnBased {
+    static var urnBase: String { get }
+}
+
+extension UrnBased {
+    public static func newUrn() -> URN { .new(Self.urnBase) }
+}
+
+public protocol UrnTypes {
+    var rawValue: String { get }
+}
+
+extension URN {
+    public static func new(_ root: String) -> URN {
+        URN(type: root, uuid: UUID())
+    }
+
+    public static func new(_ root: UrnTypes) -> URN {
+        new(root.rawValue)
+    }
+
+    public init<T>(type: T.Type, uuid: UUID) where T: UrnBased {
+        self.init(type: type.urnBase, uuid: uuid)
+    }
+
+    public init(type: String, uuid: UUID) {
+        self.init(stringValue: "\(type):\(uuid.uuidString.lowercased())")!
+    }
+
+    public init?(type: String, uuidString: String) {
+        guard let uuid = UUID(uuidString: uuidString) else {
+            return nil
+        }
+        self.init(type: type, uuid: uuid)
+    }
+
+    public init?<T>(type: T.Type, uuidString: String) where T: UrnBased {
+        guard let uuid = UUID(uuidString: uuidString) else {
+            return nil
+        }
+        self.init(type: type, uuid: uuid)
+    }
+
+    public init(type: String, fauxUuid: String) {
+        self.init(stringValue: "\(type):\(fauxUuid)")!
+    }
+
+    public init<T>(type: T.Type, fauxUuid: String) where T: UrnBased {
+        self.init(type: type.urnBase, fauxUuid: fauxUuid)
+    }
+}
